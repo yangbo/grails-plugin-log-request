@@ -51,7 +51,7 @@ grails:
 
 === Credits
 
-* Initial developer: Bob Yang (bob.yang.dev@gmail.com), https://blog.csdn.net/yangbo_hr/article/details/109488011[Chinese Blog]
+* Initial developer: Bob Yang (bob.yang.dev@gmail.com Beijing Telecwin Co.Ltd.), https://blog.csdn.net/yangbo_hr/article/details/109488011[Chinese Blog]
 
 == 中文用户手册
 
