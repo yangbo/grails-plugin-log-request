@@ -1,0 +1,69 @@
+= Log Request Plugin
+
+Log-Request-Plugin is a grails4 plugin to log request and response HTTP data.
+
+It will log the request url, method name, headers, query parameters and body.
+
+If the response body is json, the plugin will pretty print the json string with unescaped unicode characters.
+
+The plugin will not log html/binary response body, because that is too messy.
+
+== Requirement
+
+* JDK 1.8
+* Grails 4.0.3
+
+== User manual
+
+To use this plugin we need follow steps:
+
+* To import gradle dependency artifact
+* Configure application.yml to set some options
+* Configure logback.groovy to add logger
+
+=== Config gradle dependency
+
+[source]
+----
+compile "com.telecwin.grails.plugins:log-request:1.0.0"
+----
+
+=== Config application.yml
+
+[source]
+----
+grails:
+    plugin:
+        logrequest:
+            # enable the plugin
+            enable: false
+            # do not log request body
+            body:
+                # do not log request body, improve performance, for production
+                request: false
+                # do not log response body, improve performance, for production
+                response: false
+----
+
+=== add logger
+
+    logger("logrequest", DEBUG)
+
+== 中文用户手册
+
+=== 配置 application.yml
+
+[source]
+----
+grails:
+    plugin:
+        logrequest:
+            # enable the plugin
+            enable: false
+            # do not log request body
+            body:
+                # do not log request body, improve performance, for production
+                request: false
+                # do not log response body, improve performance, for production
+                response: false
+----

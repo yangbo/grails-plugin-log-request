@@ -1,0 +1,65 @@
+buildscript {
+    repositories {
+        maven {
+            url "http://maven.aliyun.com/nexus/content/groups/public/"
+        }
+        jcenter()
+        mavenCentral()
+    }
+//    dependencies {
+//        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.9.2'
+//    }
+}
+plugins{
+    //id 'org.asciidoctor.convert' version "1.5.9.2"
+    id "org.asciidoctor.jvm.convert" version "2.3.0"
+    id "org.asciidoctor.jvm.pdf" version "2.3.0"
+}
+
+project.version='1.0.0'
+
+asciidoctor {
+    logDocuments true
+    sourceDir = file('doc')
+    outputOptions {
+        backends = ['html5', 'pdf']
+    }
+
+    baseDirFollowsSourceDir()
+    // outputDir  file('build/docs')
+
+    //attributes 'imagesdir': 'doc/'
+    attributes 'pdf-fontsdir': file('doc/data/fonts')
+    attributes 'pdf-stylesdir': file('doc/data/themes')
+    attributes 'pdf-style': 'basic'
+
+    // 版本号
+    attributes 'revnumber': project.version
+
+    // 一些通用属性
+    attributes 'toc': 'left'
+    attributes 'toclevels': 6
+    attributes 'toc-title': '目录'
+    attributes 'docinfo1': ''
+    // 语法高亮，可选项有 coderay, highlightjs, prettify, pygments
+    // 为保证生成的 html5 和 pdf 均有语法高亮，所以启用 coderay
+    // 使用其它几个选项还需要做不少额外的工作，没有必要
+    attributes 'source-highlighter': 'coderay'
+    attributes 'sectnums': true
+    attributes 'sectanchors': true
+    attributes 'sectlinks': true
+    attributes 'experimental': true
+
+
+    // TIP、NOTE 之类的用自体图标显示
+    // 之所以将此属性放置在这儿是为了避免 idea asciidoc 插件无法正常显示
+    attributes 'icons': 'font'
+}
+
+repositories {
+    maven {
+        url "http://maven.aliyun.com/nexus/content/groups/public/"
+    }
+    jcenter()
+    mavenCentral()
+}
