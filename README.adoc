@@ -49,6 +49,10 @@ grails:
 
     logger("logrequest", DEBUG)
 
+=== Credits
+
+* Initial developer: Bob Yang (bob.yang.dev@gmail.com), https://blog.csdn.net/yangbo_hr/article/details/109488011[Chinese Blog]
+
 == 中文用户手册
 
 === 配置 application.yml
