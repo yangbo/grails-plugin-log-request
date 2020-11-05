@@ -129,7 +129,7 @@ class LogRequestFilter extends GenericFilterBean {
         if (body) {
             // format json
             def contentType = httpServletResponse.getHeader("Content-Type")
-            if (contentType.contains("json")){
+            if (contentType.contains("json")) {
                 body = JsonUtils.prettyPrintJson(body)
             }
             builder.append("\n").append(body).append("\n")
@@ -142,7 +142,10 @@ class LogRequestFilter extends GenericFilterBean {
      */
     static boolean logByContentType(HttpServletResponse httpServletResponse) {
         def contentType = httpServletResponse.getHeader("Content-Type")
-        if (contentType && !contentType.contains("text/html") && !contentType.contains("text/xhtml")
+        if (contentType
+                && !contentType.contains("text/html")
+                && !contentType.contains("text/xhtml")
+                && !contentType.contains("text/css")
                 && (contentType.contains("text") || contentType.contains("json"))) {
             return true
         }
