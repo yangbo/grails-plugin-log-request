@@ -34,7 +34,7 @@ repositories {
 }
 
 dependencies {
-    compile "com.telecwin.grails.plugins:log-request:1.0.0"
+    compile 'com.telecwin.grails.plugin:log-request:1.0.0'
     ...
 }
 ----
@@ -47,13 +47,13 @@ grails:
     plugin:
         logrequest:
             # enable the plugin
-            enable: false
+            enable: true
             # do not log request body
             body:
                 # do not log request body, improve performance, for production
-                request: false
+                request: true
                 # do not log response body, improve performance, for production
-                response: false
+                response: true
 ----
 
 === add logger
