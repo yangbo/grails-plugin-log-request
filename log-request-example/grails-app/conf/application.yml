@@ -104,6 +104,17 @@ dataSource:
     username: sa
     password: ''
 
+---
+grails:
+    plugin:
+        springsecurity:
+            rest:
+                token:
+                    storage:
+                        jwt:
+                            # 至少 32 字节
+                            secret: "h6vWGKMsp6y2EnsDH5TFqfrNDS7EUs9X5TFqfrNDS7EUs9X"
+---
 environments:
     development:
         grails:

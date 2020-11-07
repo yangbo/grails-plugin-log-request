@@ -42,6 +42,14 @@ class ShadowServletOutputStream extends ServletOutputStream {
     @Override
     void flush() throws IOException {
         this.delegateOutputStream.flush()
+        this.byteArrayOutputStream.flush()
+    }
+
+    @Override
+    void close() throws IOException {
+        this.delegateOutputStream.close()
+        this.byteArrayOutputStream.close()
+        super.close()
     }
 
     /**

@@ -37,7 +37,21 @@ class BufferedHttpServletResponseWrapper extends HttpServletResponseWrapper{
         // PrintWriter use getCharacterEncoding() charset or use 'ISO8859-1'. See: javax.servlet.ServletResponse.getWriter()
         String writerEncoding = wrappedResponse.getCharacterEncoding() ?: "ISO8859-1"
         log.debug("Writer encoding is {}", writerEncoding)
-        PrintWriter writer = new PrintWriter(new OutputStreamWriter(shadowOutputStream, writerEncoding))
+        // Solve OutputStreamWriter do not call flush() to dump StreamEncoder data to out-stream issue.
+        def streamWriter = new OutputStreamWriter(shadowOutputStream, writerEncoding) {
+            @Override
+            void write(String str, int off, int len) throws IOException {
+                super.write(str, off, len)
+                super.flush()
+            }
+
+            @Override
+            void write(char[] cbuf, int off, int len) throws IOException {
+                super.write(cbuf, off, len)
+                super.flush()
+            }
+        }
+        PrintWriter writer = new PrintWriter(streamWriter, true)
         return writer
     }
 }

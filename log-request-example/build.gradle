@@ -34,8 +34,18 @@ configurations {
     }
 }
 
+grails {
+    plugins {
+        compile project(':log-request')
+    }
+    // 解决命令行过长问题
+    pathingJar = true
+}
 dependencies {
-    compile 'com.telecwin.grails.plugin:log-request:1.0.0'
+    // for rest-security login issue test
+    compile "org.grails.plugins:spring-security-rest:3.0.0"
+
+    //compile 'com.telecwin.grails.plugin:log-request:1.0.0'
 
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     compile "org.springframework.boot:spring-boot-starter-logging"
