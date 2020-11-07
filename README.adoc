@@ -34,7 +34,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.telecwin.grails.plugin:log-request:1.0.0'
+    compile 'com.telecwin.grails.plugin:log-request:1.0.1'
     ...
 }
 ----
