@@ -50,6 +50,9 @@ class LogRequestFilter extends GenericFilterBean {
         }
         // call next filters
         chain.doFilter(filterRequest, filterResponse)
+        // must call manually because the OutputStreamWriter need flush() to underlying output stream
+        filterResponse.flushBuffer()
+
         bodyLog = ""
         // only log non-binary response
         if (logResponseBody && logByContentType(httpServletResponse)) {
